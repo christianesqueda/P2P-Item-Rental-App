@@ -18,7 +18,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 
 // simple route
 app.get("/", (req, res) => {
-  res.json({ message: "Welcome to the MixThisForMe application." });
+  res.json({ message: "Welcome to the DivvyUp application." });
 });
 
 require("./app/routes/tutorial.routes")(app);
