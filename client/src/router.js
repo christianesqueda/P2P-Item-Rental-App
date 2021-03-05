@@ -4,6 +4,7 @@ import Home from './views/Home.vue';
 import Login from './views/Login.vue';
 import Register from './views/Register.vue';
 import AddListing from './views/AddListing.vue'
+import Header from '@/components/Header'
 
 Vue.use(Router);
 
@@ -36,6 +37,10 @@ export const router = new Router({
       name: 'profile',
       // lazy-loaded
       component: () => import('./views/Profile.vue')
+    },
+    {
+      path: 'header',
+      component: Header,
     },
     
 

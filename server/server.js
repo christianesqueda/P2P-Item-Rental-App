@@ -21,9 +21,9 @@ app.get("/", (req, res) => {
   res.json({ message: "Welcome to the DivvyUp application." });
 });
 
-require("./app/routes/tutorial.routes")(app);
 require("./app/routes/user.routes")(app);
 require('./app/routes/auth.routes')(app);
+require("./app/routes/listing.routes")(app);
 
 // set port, listen for requests
 const PORT = process.env.PORT || 8080;
