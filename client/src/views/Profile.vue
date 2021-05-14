@@ -34,6 +34,20 @@ export default {
       return this.$store.state.auth.user;
     },
   },
+  data() {
+    return {     
+      user: {
+        id: null,
+
+      },
+      
+    };
+  },
+  created() {
+    if (this.currentUser) {
+      this.user=this.$store.state.auth.user
+    }
+  },
   mounted() {
     if (!this.currentUser) {
       this.$router.push("/login");

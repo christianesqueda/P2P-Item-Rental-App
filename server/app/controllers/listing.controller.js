@@ -7,12 +7,7 @@ const Op = db.Sequelize.Op;
 
 exports.create = (req, res) => {
   // Validate request
-  if (!req.body.itemName) {
-    res.status(400).send({
-      message: "Item name can not be empty!"
-    });
-    return;
-  }
+  
 
   // Create a Listing
   const listing = {
@@ -26,6 +21,7 @@ exports.create = (req, res) => {
     zipCode: req.body.zipCode,
     minRentalDays: req.body.minRentalDays,
     images: req.body.images,
+    userId: req.body.userId,
   };
 
   // Save Listing in the database

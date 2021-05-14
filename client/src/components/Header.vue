@@ -1,15 +1,13 @@
 <template>
   <div class="header">
     <nav class="navbar navbar-expand-lg navbar-dark naav">
+      <router-link to="/home" class="nav-link">
+        <span class="navbar-brand">DivvyUp</span>
+      </router-link>
       <div class="collapse navbar-collapse">
-        <div class="navbar-nav mr-auto">
-          <li class="nav-item">
-            <router-link to="/home" class="nav-link">
-              <span class="navbar-brand">DivvyUp</span>
-            </router-link>
-          </li>
-        </div>
+        <div class="navbar-nav mr-auto"></div>
       </div>
+      
       <div v-if="!currentUser" class="navbar-nav ml-auto">
         <li class="nav-item">
           <router-link to="/register" class="nav-link">
@@ -59,6 +57,23 @@ export default {
 
 <style scoped>
 .naav {
-    background-color: rgb(109, 222, 222);
+  background-color: rgb(109, 222, 222);
+}
+
+.form-control:focus {
+  box-shadow: none;
+}
+
+body {
+  background: #ffd89b;
+  background: -webkit-linear-gradient(to right, #ffd89b, #19547b);
+  background: linear-gradient(to right, #ffd89b, #19547b);
+  min-height: 100vh;
+}
+
+.form-control::placeholder {
+  font-size: 0.95rem;
+  color: #aaa;
+  font-style: italic;
 }
 </style>

@@ -2,29 +2,55 @@
   <div class="home">
     <div class="container mt-5">
       <div class="row">
+        <div class="col-12 mx-auto">
+          <form class="form-inline mx-auto">
+            <div class="p-1 bg-light rounded rounded-pill shadow-sm mb-4">
+              <div class="input-group">
+                <input
+                  type="search"
+                  placeholder="What're you searching for?"
+                  aria-describedby="button-addon1"
+                  class="form-control border-0 bg-light"
+                />
+                <div class="input-group-append">
+                  <button
+                    id="button-addon1"
+                    type="submit"
+                    class="btn btn-link text-primary"
+                  >
+                    <i class="fa fa-search"></i>
+                  </button>
+                </div>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+      <div class="row">
         <div class="col-4">
           <p class="welcometext">
-            Rent what you need to start working on your creative vision or 
-            the items you need for a fun activity from people near you who share your same
-            passion.
+            Rent what you need to start working on your creative vision or the
+            items you need for a fun activity from people near you who share
+            your same passion.
           </p>
         </div>
         <div class="col-4 musica">
+          <img src="@/assets/dj-playing-music-mixer.jpg" class="center-block" />
+        </div>
+        <div class="col-4 musica">
           <img
-            src="@/assets/dj-playing-music-mixer.jpg"
+            src="@/assets/woman-travelling-quad-by-th-ocean.jpg"
             class="center-block"
           />
         </div>
-        <div class="col-4 musica">
-          <img src="@/assets/woman-travelling-quad-by-th-ocean.jpg" class="center-block" />
-        </div>
       </div>
       <div class="row mt-3">
-        <div class="col-4">
-
-        </div>
+        <div class="col-4"></div>
         <div class="col-4 sports">
-          <img src="@/assets/couple-prepared-enjoy-snow.jpg" class="center-block" />
+          <img
+            src="@/assets/couple-prepared-enjoy-snow.jpg"
+            class="center-block"
+          />
         </div>
         <div class="col-4 cameras">
           <img
@@ -71,8 +97,25 @@ export default {
 }
 
 .welcometext {
-  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+  font-family: Merriweather, serif;
   font-weight: bolder;
-  color: rgb(150, 121, 25);
+  color: rgb(125, 125, 59);
+}
+
+.form-control:focus {
+  box-shadow: none;
+}
+
+body {
+  background: #ffd89b;
+  background: -webkit-linear-gradient(to right, #ffd89b, #19547b);
+  background: linear-gradient(to right, #ffd89b, #19547b);
+  min-height: 100vh;
+}
+
+.form-control::placeholder {
+  font-size: 0.95rem;
+  color: #aaa;
+  font-style: italic;
 }
 </style>

@@ -39,7 +39,7 @@ export const router = new Router({
       component: () => import('./views/Profile.vue')
     },
     {
-      path: 'header',
+      path: '/header',
       component: Header,
     },
     

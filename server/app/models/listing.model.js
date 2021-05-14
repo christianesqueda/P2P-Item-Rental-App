@@ -1,12 +1,7 @@
-// const uuid = require('uuid/v4')
 
 module.exports = (sequelize, Sequelize) => {
   const Listing = sequelize.define("listing", {
-    // id: {
-    //   type: Sequelize.STRING,
-    //   allowNull: false,
-    //   primaryKey: true
-    // },
+    
     itemName: {
       type: Sequelize.STRING,
     },
@@ -37,6 +32,10 @@ module.exports = (sequelize, Sequelize) => {
     images: {
       type: Sequelize.BLOB("long"),
     },
+    userId: {
+      type: Sequelize.INTEGER,
+    },
+    
   });
 
   return Listing;
