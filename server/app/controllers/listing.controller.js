@@ -37,5 +37,47 @@ exports.create = (req, res) => {
     });
 };
 
-// Retrieve all Tutorials/ find by title from the database:
+// Retrieve all listings
+exports.findAll = (req, res) => {
+  const userId = req.query.userId;
+  var condition = userId
+    ? { userId: { [Op.like]: `${userId}` } }
+    : null;
+
+    Listing.findAll({ where: condition })
+    .then((data) => {
+      res.send(data);
+    })
+    .catch((err) => {
+      res.status(500).send({
+        message:
+          err.message ||
+          "Some error occurred while retrieving listings.",
+      });
+    });
+};
+
+exports.delete = (req, res) => {
+  const id = req.params.id;
+
+  Listing.destroy({
+          where: { id: id }
+      })
+      .then(num => {
+          if (num == 1) {
+              res.send({
+                  message: "Listing was deleted successfully!"
+              });
+          } else {
+              res.send({
+                  message: `Cannot delete Listing with id=${id}. Maybe Project was not found!`
+              });
+          }
+      })
+      .catch(err => {
+          res.status(500).send({
+              message: "Could not delete Project with id=" + id
+          });
+      });
+};
 

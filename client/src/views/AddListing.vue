@@ -75,6 +75,8 @@
             :show-add=true
             ></vue-upload-multiple-image>
           </div>
+
+        
             
         </div>
         <div class="container col-md-5 mt-4 text-center">
@@ -147,6 +149,7 @@
 <script>
 import ListingDataService from "@/services/ListingDataService";
 import VueUploadMultipleImage from 'vue-upload-multiple-image'
+import axios from 'axios';
 
 export default {
   name: "AddListing",
@@ -202,9 +205,9 @@ export default {
     uploadImageSucess(formData, index, fileList){
       console.log("upload success data ", formData, index, fileList)
       // upload image api
-      // axios.post('http://your-url-upload', formData).then(response =>{
-      //   console.log(response)
-      // })
+      axios.post('http://your-url-upload', formData).then(response =>{
+        console.log(response)
+      })
     },
     beforeRemove(index, removeCallBack){
       console.log('index', index)

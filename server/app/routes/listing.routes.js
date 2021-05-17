@@ -6,11 +6,9 @@ module.exports = app => {
     // Create a new Listing
     router.post("/", listings.create);
   
-    // // Retrieve all Listings
-    // router.get("/", listings.findAll);
+    // Retrieve all Listings
+    router.get("/", listings.findAll);
   
-    // // Retrieve all published Listings
-    // router.get("/published", listings.findAllPublished);
   
     // // Retrieve a single Listing with id
     // router.get("/:id", listings.findOne);
@@ -19,7 +17,7 @@ module.exports = app => {
     // router.put("/:id", listings.update);
   
     // // Delete a Listing with id
-    // router.delete("/:id", listings.delete);
+    router.delete("/:id", listings.delete);
   
     // // Delete all Listings
     // router.delete("/", listings.deleteAll);
