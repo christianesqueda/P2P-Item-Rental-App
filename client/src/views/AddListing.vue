@@ -4,9 +4,7 @@
       <div class="row">
         <div class="col-md-5 text-center mx-5">
           <div class="form-group mt-4">
-            <label for="category"
-              ><strong> Category </strong></label
-            >
+            <label for="category"><strong> Category </strong></label>
             <select v-model="item.category" class="form-control">
               <option value="" selected disabled
                 >- Please Select an Option -</option
@@ -20,7 +18,6 @@
               <option value="electronics">Electronics</option>
               <option value="instruments">Instruments</option>
             </select>
-            <p>{{ item.description }}</p>
           </div>
           <div class="form-group mt-4">
             <label for="itemName"><strong>Item Name</strong></label>
@@ -53,31 +50,29 @@
               accept="image/*"
             />
           </div> -->
-          <div class="form-group mt-4">
+          <!-- <div class="form-group mt-4">
             <vue-upload-multiple-image
-            @upload-success="uploadImageSuccess"
-            @edit-image="editImage"
-            :data-images="images"
-            @mark-is-primary="markIsPrimary"
-            @limit-exceeded="limitExceeded"
-            @before-remove="beforeRemove"
-            id-upload="myIdUpload"
-            id-edit="myIdEdit"
-            :max-image=10
-            primary-text="Default"
-            browse-text="Browse picture(s)"
-            drag-text="Drag pictures"
-            mark-is-primary-text="Set as default"
-            popup-text="This image will be displayed as default"
-            :multiple=true
-            :show-edit=true
-            :show-delete=true
-            :show-add=true
+              @upload-success="uploadImageSuccess()"
+              @edit-image="editImage()"
+              :data-images="images"
+              @mark-is-primary="markIsPrimary()"
+              @limit-exceeded="limitExceeded()"
+              @before-remove="beforeRemove()"
+              id-upload="myIdUpload"
+              id-edit="myIdEdit"
+              :max-image="10"
+              primary-text="Default"
+              browse-text="Browse picture(s)"
+              drag-text="Drag pictures"
+              mark-is-primary-text="Set as default"
+              popup-text="This image will be displayed as default"
+              :multiple="true"
+              :show-edit="true"
+              :show-delete="true"
+              :show-add="true"
             ></vue-upload-multiple-image>
-          </div>
-
-        
-            
+          </div> -->
+          
         </div>
         <div class="container col-md-5 mt-4 text-center">
           <span><strong>Rental Price</strong></span>
@@ -135,9 +130,7 @@
           />
           <div class="row">
             <div class="col-md-5 mx-5 p-4 ">
-              <button 
-                @click="createListing()"
-              >Create Listing</button>
+              <button @click="createListing()">Create Listing</button>
             </div>
           </div>
         </div>
@@ -148,8 +141,8 @@
 
 <script>
 import ListingDataService from "@/services/ListingDataService";
-import VueUploadMultipleImage from 'vue-upload-multiple-image'
-import axios from 'axios';
+// import VueUploadMultipleImage from "vue-upload-multiple-image";
+// import axios from 'axios';
 
 export default {
   name: "AddListing",
@@ -159,75 +152,74 @@ export default {
     },
   },
   components: {
-    VueUploadMultipleImage,
+    // VueUploadMultipleImage,
   },
 
   data() {
     return {
       item: {
-        category: '',
-        itemName: '',
-        description: '',
-        dayPrice: '',
-        weekPrice: '',
-        monthPrice: '',
-        zipCode: '',
-        itemValue: '',
-        minRentalDays: '',
-        
+        category: "",
+        itemName: "",
+        description: "",
+        dayPrice: "",
+        weekPrice: "",
+        monthPrice: "",
+        zipCode: "",
+        itemValue: "",
+        minRentalDays: "",
       },
       images: [],
     };
   },
   methods: {
-    createListing(){
+    createListing() {
       var data = {
-          itemName: this.item.itemName,
-          category: this.item.category,
-          description: this.item.description,
-          dayPrice: this.item.dayPrice,
-          weekPrice: this.item.weekPrice,
-          monthPrice: this.item.monthPrice,
-          zipCode: this.item.zipCode,
-          itemValue: this.item.itemValue,
-          images: this.images,
-          minRentalDays: this.item.minRentalDays,
-          userId: this.userId,
-        };
-        ListingDataService.create(data)
-          .then((response) => {
-            console.log(response.data);
-          })
-          .catch((e) => {
-            console.log(e);
-          });
+        itemName: this.item.itemName,
+        category: this.item.category,
+        description: this.item.description,
+        dayPrice: this.item.dayPrice,
+        weekPrice: this.item.weekPrice,
+        monthPrice: this.item.monthPrice,
+        zipCode: this.item.zipCode,
+        itemValue: this.item.itemValue,
+        images: this.images,
+        minRentalDays: this.item.minRentalDays,
+        userId: this.userId,
+      };
+      ListingDataService.create(data)
+        .then((response) => {
+          console.log(response.data);
+        })
+        .catch((e) => {
+          console.log(e);
+        });
     },
-    uploadImageSucess(formData, index, fileList){
-      console.log("upload success data ", formData, index, fileList)
-      // upload image api
-      axios.post('http://your-url-upload', formData).then(response =>{
-        console.log(response)
-      })
-    },
-    beforeRemove(index, removeCallBack){
-      console.log('index', index)
-      let r = confirm('remove image')
-      if (r === true){
-        removeCallBack()
-      }
-    },
+    // uploadImageSuccess(formData, index, fileList) {
+    //   console.log("upload success data ", formData, index, fileList);
+    //   // upload image api
+    //   // axios.post('http://your-url-upload', formData).then(response =>{
+    //   //   console.log(response)
+    //   // })
+    // },
+    // beforeRemove(index, removeCallBack) {
+    //   console.log("index", index);
+    //   let r = confirm("remove image");
+    //   if (r === true) {
+    //     removeCallBack();
+    //   }
+    // },
 
-    editImage(formData, index, fileList){
-      console.log('edit data', formData, index, fileList)
-    },
+    // editImage(formData, index, fileList) {
+    //   console.log("edit data", formData, index, fileList);
+    // },
 
-    markIsPrimary(index, fileList){
-      console.log('markIsPrimary data', index, fileList)
-    },
+    // markIsPrimary(index, fileList) {
+    //   console.log("markIsPrimary data", index, fileList);
+    // },
 
-    limitExceeded(amount){
-      console.log('limitExceeded data', amount)
-    },
+    // limitExceeded(amount) {
+    //   console.log("limitExceeded data", amount);
+    // },
   },
 };
 </script>
