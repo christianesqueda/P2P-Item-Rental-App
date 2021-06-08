@@ -1,6 +1,14 @@
 <template>
   <div class="container">
-    <form action="">
+    <form >
+      <div class="row">
+        <div
+          v-if="message"
+          :class="`message ${error ? 'is-danger' : 'is-success'}`"
+        >
+          <div class="message-body">{{ message }}</div>
+        </div>
+      </div>
       <div class="row">
         <div class="col-md-5 text-center mx-5">
           <div class="form-group mt-4">
@@ -41,39 +49,8 @@
             />
           </div>
 
-          <!-- <div class="form-group mt-4">
-            <label for="image1"><strong>Add Photos</strong> </label>
-            <input
-              type="file"
-              name="image1"
-              class="form-control button-img"
-              accept="image/*"
-            />
-          </div> -->
-          <!-- <div class="form-group mt-4">
-            <vue-upload-multiple-image
-              @upload-success="uploadImageSuccess()"
-              @edit-image="editImage()"
-              :data-images="images"
-              @mark-is-primary="markIsPrimary()"
-              @limit-exceeded="limitExceeded()"
-              @before-remove="beforeRemove()"
-              id-upload="myIdUpload"
-              id-edit="myIdEdit"
-              :max-image="10"
-              primary-text="Default"
-              browse-text="Browse picture(s)"
-              drag-text="Drag pictures"
-              mark-is-primary-text="Set as default"
-              popup-text="This image will be displayed as default"
-              :multiple="true"
-              :show-edit="true"
-              :show-delete="true"
-              :show-add="true"
-            ></vue-upload-multiple-image>
-          </div> -->
-          
         </div>
+
         <div class="container col-md-5 mt-4 text-center">
           <span><strong>Rental Price</strong></span>
           <br />
@@ -130,7 +107,10 @@
           />
           <div class="row">
             <div class="col-md-5 mx-5 p-4 ">
-              <button @click="createListing()">Create Listing</button>
+              <button @click.prevent="createListing()">Save</button>
+            </div>
+            <div class="col-md-5 mx-5 p-4 ">
+              <button @click.prevent="nextPage()">Next</button>
             </div>
           </div>
         </div>
@@ -141,8 +121,6 @@
 
 <script>
 import ListingDataService from "@/services/ListingDataService";
-// import VueUploadMultipleImage from "vue-upload-multiple-image";
-// import axios from 'axios';
 
 export default {
   name: "AddListing",
@@ -151,13 +129,12 @@ export default {
       return this.$store.state.auth.user.id;
     },
   },
-  components: {
-    // VueUploadMultipleImage,
-  },
 
   data() {
     return {
+      message: "",
       item: {
+        id: null,
         category: "",
         itemName: "",
         description: "",
@@ -168,11 +145,24 @@ export default {
         itemValue: "",
         minRentalDays: "",
       },
-      images: [],
+      remoteUrl: "",
     };
   },
   methods: {
+
+
+    nextPage(){
+
+      this.$router.push("/AddImages");
+      this.$store.dispatch('listingData/resetState')
+      this.$store.dispatch('listingData/setId', this.item.id)
+    
+    },
+
     createListing() {
+
+
+
       var data = {
         itemName: this.item.itemName,
         category: this.item.category,
@@ -182,46 +172,50 @@ export default {
         monthPrice: this.item.monthPrice,
         zipCode: this.item.zipCode,
         itemValue: this.item.itemValue,
-        images: this.images,
         minRentalDays: this.item.minRentalDays,
         userId: this.userId,
       };
       ListingDataService.create(data)
         .then((response) => {
           console.log(response.data);
+          this.message = "Listing was added successfuly";
+          this.error = false;
+          this.item.id = response.data.id
         })
         .catch((e) => {
           console.log(e);
+          this.message =
+            "There was an error adding the listing, try again later";
+          this.error = true;
         });
     },
-    // uploadImageSuccess(formData, index, fileList) {
-    //   console.log("upload success data ", formData, index, fileList);
-    //   // upload image api
-    //   // axios.post('http://your-url-upload', formData).then(response =>{
-    //   //   console.log(response)
-    //   // })
-    // },
-    // beforeRemove(index, removeCallBack) {
-    //   console.log("index", index);
-    //   let r = confirm("remove image");
-    //   if (r === true) {
-    //     removeCallBack();
-    //   }
-    // },
-
-    // editImage(formData, index, fileList) {
-    //   console.log("edit data", formData, index, fileList);
-    // },
-
-    // markIsPrimary(index, fileList) {
-    //   console.log("markIsPrimary data", index, fileList);
-    // },
-
-    // limitExceeded(amount) {
-    //   console.log("limitExceeded data", amount);
-    // },
   },
 };
 </script>
 
-<style scoped></style>
+<style scoped>
+.card {
+  height: 10rem;
+  width: 20rem;
+  border-radius: 10px;
+  padding: 20px;
+  text-align: center;
+}
+
+.mt-10 {
+  margin-top: 10rem;
+}
+
+img {
+  width: 17rem;
+}
+
+.bg-white {
+  background: #fff;
+}
+
+.container-card {
+  display: flex;
+  justify-content: center;
+}
+</style>

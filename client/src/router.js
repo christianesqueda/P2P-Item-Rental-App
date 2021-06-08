@@ -4,6 +4,7 @@ import Home from './views/Home.vue';
 import Login from './views/Login.vue';
 import Register from './views/Register.vue';
 import AddListing from './views/AddListing.vue'
+import AddImages from './views/AddImages.vue'
 import Header from '@/components/Header'
 
 Vue.use(Router);
@@ -31,6 +32,10 @@ export const router = new Router({
     {
       path:'/AddListing',
       component: AddListing
+    },
+    {
+      path:'/AddImages',
+      component: AddImages
     },
     {
       path: '/profile',

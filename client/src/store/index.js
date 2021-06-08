@@ -4,6 +4,7 @@ import Vuex from 'vuex';
 import actions from './actions'
 import mutations from './mutations'
 import state from './state'
+import { listingData } from './listing.module'
 
 import { auth } from './auth.module';
 
@@ -15,6 +16,7 @@ export default new Vuex.Store({
   actions,
   // getters,
   modules: {
-    auth
+    auth,
+    listingData,
   }
 });

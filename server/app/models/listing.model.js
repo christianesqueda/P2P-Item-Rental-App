@@ -30,7 +30,7 @@ module.exports = (sequelize, Sequelize) => {
       type: Sequelize.INTEGER,
     },
     images: {
-      type: Sequelize.BLOB("long"),
+      type: Sequelize.STRING,
     },
     userId: {
       type: Sequelize.INTEGER,

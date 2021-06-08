@@ -14,7 +14,7 @@ module.exports = app => {
     // router.get("/:id", listings.findOne);
   
     // // Update a Listing with id
-    // router.put("/:id", listings.update);
+    router.put("/:id", listings.update);
   
     // // Delete a Listing with id
     router.delete("/:id", listings.delete);

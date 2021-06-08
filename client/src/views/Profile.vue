@@ -23,19 +23,22 @@
           </button>
         </div>
       </div>
-      <div 
       
-      class="col-md-4"></div>
     </div>
+    <div class="row ">
+        <div class="h4 mt-2 text-center">
+          <strong>Your Current Listings</strong>
+        </div>
+      </div>
     <div class="row" @mouseover="mouseOver" @mouseleave="mouseLeave">
       <div
-        class="col-md-3 text-center"
+        class="col-md-3 mt-4 text-center"
         
         v-for="(listing, index) in listings"
         :key="index"
       >
         <div class="card bg-light" >
-          <img class="card-img-top" style="height: 125px" src="" alt="Card image cap">
+          <img class="card-img-top" style="height: 125px" :src="listing.images" alt="">
           <div class="card-body" >
             <p class="title is-5" style="cursor:pointer">
               {{ listing.itemName }}
@@ -72,6 +75,7 @@ export default {
       },
       listings: [],
       active: false,
+      imageUrl: ''
     };
   },
   methods: {

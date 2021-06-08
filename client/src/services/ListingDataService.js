@@ -9,7 +9,11 @@ class ListingDataService {
     }
 
     create(data) {
-        return http.post("/listings", data);
+        return http.post("/listings", data, {
+            headers: {
+                'Content-Type': 'multipart/form-data'
+            }
+          });
     }
 
     update(id, data) {
