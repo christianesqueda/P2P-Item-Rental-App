@@ -52,7 +52,7 @@
         </div>
 
         <div class="container col-md-5 mt-4 text-center">
-          <span><strong>Rental Price</strong></span>
+          <span><strong>Rental Price (In U.S. Dollars)</strong></span>
           <br />
           <label class="mt-4" for="itemName"><strong>Daily</strong></label>
 
@@ -71,14 +71,7 @@
             size="10"
             class="form-control"
           />
-          <label class="mt-4" for="itemName"><strong>Monthly</strong></label>
-          <input
-            type="number"
-            v-model="item.monthPrice"
-            placeholder="$0.00"
-            size="10"
-            class="form-control"
-          />
+          
           <label class="mt-4" for="itemName"><strong>Item Value</strong></label>
           <input
             type="number"
@@ -107,10 +100,10 @@
           />
           <div class="row">
             <div class="col-md-5 mx-5 p-4 ">
-              <button @click.prevent="createListing()">Save</button>
+              <button v-if="error" @click.prevent="createListing()">Save</button>
             </div>
             <div class="col-md-5 mx-5 p-4 ">
-              <button @click.prevent="nextPage()">Next</button>
+              <button v-if="!error" @click.prevent="nextPage()">Next Step</button>
             </div>
           </div>
         </div>
@@ -140,12 +133,11 @@ export default {
         description: "",
         dayPrice: "",
         weekPrice: "",
-        monthPrice: "",
         zipCode: "",
         itemValue: "",
         minRentalDays: "",
       },
-      remoteUrl: "",
+      error: true,
     };
   },
   methods: {
@@ -169,7 +161,6 @@ export default {
         description: this.item.description,
         dayPrice: this.item.dayPrice,
         weekPrice: this.item.weekPrice,
-        monthPrice: this.item.monthPrice,
         zipCode: this.item.zipCode,
         itemValue: this.item.itemValue,
         minRentalDays: this.item.minRentalDays,
@@ -177,7 +168,6 @@ export default {
       };
       ListingDataService.create(data)
         .then((response) => {
-          console.log(response.data);
           this.message = "Listing was added successfuly";
           this.error = false;
           this.item.id = response.data.id

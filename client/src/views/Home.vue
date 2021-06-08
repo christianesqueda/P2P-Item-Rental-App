@@ -1,7 +1,6 @@
 <template>
-  <div class="home">
-    <div class="container mt-5">
-      <div class="row">
+    <div class="container">
+      <!-- <div class="row">
         <div class="col-12 mx-auto">
           <form class="form-inline mx-auto">
             <div class="p-1 bg-light rounded rounded-pill shadow-sm mb-4">
@@ -25,8 +24,8 @@
             </div>
           </form>
         </div>
-      </div>
-      <div class="row">
+      </div> -->
+      <div class="row py-2 bg-dark">
         <div class="col-4">
           <p class="welcometext">
             Rent what you need to start working on your creative vision or the
@@ -34,7 +33,7 @@
             your same passion.
           </p>
         </div>
-        <div class="col-4 musica">
+        <div class="col-4 bg-dark musica">
           <img src="@/assets/dj-playing-music-mixer.jpg" class="center-block" />
         </div>
         <div class="col-4 musica">
@@ -44,7 +43,7 @@
           />
         </div>
       </div>
-      <div class="row mt-3">
+      <div class="row bg-dark py-2">
         <div class="col-4"></div>
         <div class="col-4 sports">
           <img
@@ -59,8 +58,8 @@
           />
         </div>
       </div>
+
     </div>
-  </div>
 </template>
 
 <script>
@@ -74,9 +73,11 @@ export default {
 </script>
 
 <style scoped>
-.background {
-  background-color: rgb(255, 255, 255);
-}
+
+
+
+
+
 
 .musica img {
   width: 100%;
@@ -99,23 +100,14 @@ export default {
 .welcometext {
   font-family: Merriweather, serif;
   font-weight: bolder;
-  color: rgb(125, 125, 59);
+  color: rgb(255, 255, 255);
 }
 
-.form-control:focus {
-  box-shadow: none;
+.container{
+  height: 100vh;
+  width: 100vw;
 }
 
-body {
-  background: #ffd89b;
-  background: -webkit-linear-gradient(to right, #ffd89b, #19547b);
-  background: linear-gradient(to right, #ffd89b, #19547b);
-  min-height: 100vh;
-}
 
-.form-control::placeholder {
-  font-size: 0.95rem;
-  color: #aaa;
-  font-style: italic;
-}
+
 </style>

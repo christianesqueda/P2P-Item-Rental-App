@@ -1,5 +1,7 @@
 <template>
-  <div class="col-md-12">
+<div class="container">
+  <div class="row bg-dark">
+  <div class="col-lg-12 bg-dark">
     <div class="card card-container">
       <img
         id="profile-img"
@@ -48,6 +50,8 @@
         </div>
       </form>
     </div>
+  </div>
+  </div>
   </div>
 </template>
 
@@ -134,5 +138,10 @@ label {
   -moz-border-radius: 50%;
   -webkit-border-radius: 50%;
   border-radius: 50%;
+}
+
+.container{
+  height: 100vh;
+  width: 100vw;
 }
 </style>

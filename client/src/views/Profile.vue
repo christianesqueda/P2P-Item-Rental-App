@@ -3,13 +3,15 @@
     <div class="row avatar">
       <div class="col-md-2 text-center ml-0">
         <img
-          src="../assets/male_avatar.png"
+          src="../assets/town.png"
           alt="Avatar"
           class="rounded-circle img-fluid mt-4"
         />
 
         <div class="h3 mt-2">
-          <strong>{{ currentUser.username }} </strong>
+          <p class="text-white">
+          {{ currentUser.username }} 
+          </p>
         </div>
       </div>
       <div class="col-md-6 text-center">
@@ -25,9 +27,9 @@
       </div>
       
     </div>
-    <div class="row ">
+    <div class="row d-flex justify-content-center">
         <div class="h4 mt-2 text-center">
-          <strong>Your Current Listings</strong>
+          <p class="text-light text-center">Your Current Listings</p>
         </div>
       </div>
     <div class="row" @mouseover="mouseOver" @mouseleave="mouseLeave">
@@ -46,15 +48,14 @@
             <p class="subtitle is-6">{{ listing.category }}</p>
             <p class="subtitle is-6">Daily Price ${{ listing.dayPrice }}</p>
             <div 
-            class="card-footer bg-transparent border-dark">
-            <button class="edit"><i class="fas fa-pen"></i></button>
+            class="card-footer bg-transparent border-dark d-flex justify-content-center ">
+            <!-- <button class="edit"><i class="fas fa-pen"></i></button> -->
             <button @click="deleteListing(listing.id)" class="edit"><i class="fas fa-trash-alt"></i></button>
             </div>
           </div>
         </div>
       </div>
     </div>
-    <div class="row"></div>
   </div>
 </template>
 
@@ -127,7 +128,9 @@ export default {
 }
 
 .image {
-  width: 20%;
+  width: 100px;
+  height: 100px;
+  object-fit: cover;
 }
 
 .edit {

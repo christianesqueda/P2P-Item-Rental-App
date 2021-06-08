@@ -1,6 +1,7 @@
 <template>
-  <form @submit.prevent="onSubmit" enctype="multipart/form-data">
-    <div class="file is-boxed is-primary mt-5">
+<div class="mt-5 pb-5">
+  <!-- <form  enctype="multipart/form-data"> -->
+    <!-- <div class="file is-boxed is-primary mt-5">
       <label for="file" class="label"><strong>Upload Image</strong></label>
       <input type="file" ref="file" @change="onSelect" class="file-input" />
 
@@ -18,19 +19,26 @@
         <h5>{{ message }}</h5>
       </div>
       <div>
-        <img src="" alt="">
+        <img :src="url" alt="">
       </div>
     </div>
-    <button class="mt-5">Submit Image</button>
-  </form>
+    <button class="mt-5">Submit Image</button> -->
+    <UploadImages fileError="images files only accepted" :max="1" maxError="Only one image for now" ref="file" @change="onSelect" />
+    <button @click.prevent="onSubmit" class="mt-5">Submit Image</button>
+  <!-- </form> -->
+  </div>
 </template>
 
 <script>
 import axios from "axios";
 import ListingDataService from "@/services/ListingDataService";
+import UploadImages from "vue-upload-drop-images"
 
 export default {
   name: "AddImages",
+  components: {
+    UploadImages,
+  },
   computed: {
     userId() {
       return this.$store.state.auth.user.id;
@@ -80,14 +88,13 @@ export default {
         this.message = "Uploaded!";
         this.bfile = res.data.file
         this.url = res.data.url
-        console.log(this.bfile)
-        console.log(this.url)
+
         this.saveImages()
       }).catch((err) =>{
         console.log(err)
         this.message = "Something went wrong!";
       })
-      
+      this.$router.push("/profile");
     },
   },
 };
