@@ -81,6 +81,15 @@ app.use((err, req, res, next) => {
   }
 })
 
+// handle production
+
+if(process.env.NODE_ENV === 'production'){
+  app.use(express.static(__dirname + '/public'))
+
+  // handle SPA
+  app.get(/.*/, (req, res) => res.sendFile(__dirname + '/public/index.html'))
+}
+
 const PORT = process.env.PORT || 8080;
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}.`);

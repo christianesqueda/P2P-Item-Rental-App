@@ -1,7 +1,7 @@
 <template>
   <div class="header bg-dark">
     <nav class="navbar navbar-expand-lg navbar-dark naav">
-      <router-link to="/home" class="nav-link">
+      <router-link to="/" class="nav-link">
       <img class="logo" src="../assets/town.png" alt="">
         <span class="navbar-brand">DivvyTown</span>
       </router-link>

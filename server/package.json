@@ -5,7 +5,8 @@
   "main": "server.js",
   "scripts": {
     "start": "node server",
-    "dev": "nodemon server"
+    "dev": "NODE_ENV=development nodemon server",
+    "prod": "NODE_ENV=production nodemon server"
   },
   "keywords": [],
   "author": "",
