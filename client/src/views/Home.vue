@@ -32,14 +32,10 @@
             items you need for a fun activity from people near you who share
             your same passion.
           </p>
-          <p class="welcometext">
-            Create a free account in order to start posting items you would like to 
-            rent to others. Similarly, having an account will allow you to find items you're
-            looking for and rent them.
-          </p>
+          
         </div>
         <div class="col-4 bg-dark musica">
-          <img src="@/assets/dj-playing-music-mixer.jpg" class="center-block" />
+          <img src="@/assets/dj-playing.png" class="center-block" />
         </div>
         <div class="col-4 musica">
           <img
@@ -49,10 +45,17 @@
         </div>
       </div>
       <div class="row bg-dark py-2">
-        <div class="col-4"></div>
+        
+        <div class="col-4">
+          <p class="welcometext">
+            Create a free account in order to start posting items you would like to 
+            rent to others. Similarly, having an account will allow you to find items you're
+            looking for and rent them.
+          </p>
+        </div>
         <div class="col-4 sports">
           <img
-            src="@/assets/couple-prepared-enjoy-snow.jpg"
+            src="@/assets/snowboard-couple.png"
             class="center-block"
           />
         </div>
