@@ -145,4 +145,9 @@ export default {
   margin-right: 10px;
   margin-bottom: 10px;
 }
+
+.container{
+  height: 100vh;
+  width: 100vw;
+}
 </style>
