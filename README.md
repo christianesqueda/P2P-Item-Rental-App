@@ -1,4 +1,4 @@
 # nodejs-mysql-vue-project
-This web application is designed to allow users to perform peer-to-peer item rentals on a variety of categories. Users can rent hobby items from each other such as audio and visual equipment, sports equipment, etc. 
+Full-stack web application used to perform peer-to-peer hobby item rentals. The application allows users to create an account and post the belonging items they would like to rent to others near their area. Updates and additional components are added to DivvyTown.com every week. 
 
-Some of the technologies used are: Node.js, Express.js, Vue.js, MySQL, Sequelize.
+Languages and technologies used: Javascript, Vue, Node.js, MySQL, and Heroku.
